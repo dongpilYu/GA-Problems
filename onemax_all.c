@@ -394,7 +394,6 @@ int main(int argc,char** argv)
 	gettimeofday(&t,NULL);
 	srand(t.tv_usec * t.tv_sec * getpid());
 
-	
 	TYPE=(char*)malloc(sizeof(char)*30);
 	TYPE=argv[1];
 	

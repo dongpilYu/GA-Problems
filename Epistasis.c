@@ -160,10 +160,8 @@ int main(int argc,char** argv)
 	{
 		strcat(type,c_genes);
 		strcat(type,c_k);
-		fp = fopen(type,"a+");
-
-		
-	
+		fp = fopen(type,"a+");	
+		printf("123");	
 		for(int i=0;i<power(genes);i++)
 		{
 			int ge=i;
@@ -195,8 +193,7 @@ int main(int argc,char** argv)
 	{
 		strcat(type,c_genes);
 		fp = fopen(type,"a+");
-
-		
+	
 		for(int i=0;i<power(genes);i++)
 		{
 			int ge=i;
@@ -270,6 +267,7 @@ int main(int argc,char** argv)
 				{
 					binary[j]='1';
 					ge -= power(divider);	
+					fitness += 1;
 				}
 				else
 				{
@@ -278,16 +276,17 @@ int main(int argc,char** argv)
 				divider--;
 				
 			}
-			binary[genes]='\0';
-		
-			fitness = 0;
 
-			if(i == 1 || i == power(genes)-5)
+			if(i == 0)
 				fitness = genes;
+			else
+				fitness -= 1;
 
+
+			binary[genes]='\0';
 			fprintf(fp,"%s %d\n",binary,fitness);			
 		}
-
+	
 	}
 		
 	fclose(fp);
