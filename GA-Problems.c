@@ -442,7 +442,7 @@ int main(int argc,char** argv)
 		{
 			FILE* fpp;
 			char resultFile[200];
-			sprintf(resultFile,"nk%d_%d",NK_N,NK_K);
+			sprintf(resultFile,"land%d_%d",NK_N,NK_K);
 			fpp = fopen(resultFile,"a+");
 			for(int a=0;a<NK_N;a++)
 			{
