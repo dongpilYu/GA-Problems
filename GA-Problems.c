@@ -386,8 +386,8 @@ void resultToFile(Fitness gener[GENERATION],int num)
 	*/
 	fclose(fp);
 }
-
 /* 이 때의 num은 세대를 다 거치기 전 끝난 경우를 위한 변수 */
+
 int main(int argc,char** argv) 
 {
 	struct timeval t;
@@ -395,13 +395,10 @@ int main(int argc,char** argv)
 	srand(t.tv_usec * t.tv_sec * getpid());
 
 	TYPE=(char*)malloc(sizeof(char)*30);
-	TYPE=argv[1];
-	
+	TYPE=argv[1];	
 	LOCATION=(char*)malloc(sizeof(char)*30);
 	LOCATION=argv[2];
-	
 	NK_K=atoi(argv[3]);
-	
 	GENES=atoi(argv[4]);
 	NK_N=GENES;
 
@@ -410,9 +407,6 @@ int main(int argc,char** argv)
 	next_population=(int**)malloc(sizeof(int*)*INDIVIDUAL);
 	randomArr=(int*)malloc(sizeof(int)*power(GENES));
 	int randOpt = rand() % GENES + 1;
-
-	for(i=0;i<power(GENES);i++)
-		randomArr[i] = rand() % GENES + 1;
 
 	for(i=0;i<INDIVIDUAL;i++)
 	{
@@ -424,14 +418,12 @@ int main(int argc,char** argv)
  
    	Fitness* generation=(Fitness*)malloc(sizeof(Fitness)*GENERATION);
 
-	
 	NK* landscape=(NK*)malloc(sizeof(NK));
 	nk_create(landscape);
 	
-
     for (i = 0; i < GENERATION; i++)
     {
-    	fitnessCheck(&generation[i]);
+    	// fitnessCheck(&generation[i]);
 		
     	/* 적합도 계산을 위한 함수 호출 */
 		 fitnessCheckForNK(&generation[i],landscape);
@@ -442,7 +434,7 @@ int main(int argc,char** argv)
 		{
 			FILE* fpp;
 			char resultFile[200];
-			sprintf(resultFile,"nk%d_%d",NK_N,NK_K);
+			sprintf(resultFile,"land%d_%d",NK_N,NK_K);
 			fpp = fopen(resultFile,"a+");
 			for(int a=0;a<NK_N;a++)
 			{
@@ -475,15 +467,11 @@ int main(int argc,char** argv)
 		/*
 		printf("%d Generation: \n", i + 1);
 		k=ideal_individuo; 
-	
 			 
 		for (l = 0; l < GENES; l++)
 			printf("%d ", population[k][l]);    
-		
 	
 		printf("\n");
-		
-
 	   	printf("%lf", ideal_num);
 	   	printf("\n");
 		*/
@@ -492,12 +480,8 @@ int main(int argc,char** argv)
 		
 		if (ideal_num == GENES)    
 		    break;	
-		
-		/*
-		if (ideal_num == randOpt)
-			break;
-		*/
-        int indices_selec[INDIVIDUAL];
+        
+		int indices_selec[INDIVIDUAL];
 
         for(j = 0; j < INDIVIDUAL; j++)
             indices_selec[j] = tornament(&generation[i]);
@@ -590,6 +574,8 @@ int main(int argc,char** argv)
 		resultToFile(generation,i+1);
 	/* 파일에 결과를 출력 */
 	nk_free(landscape);
-	// free(randomArr);
+	
+
+
 }
 

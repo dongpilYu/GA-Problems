@@ -20,8 +20,8 @@ Epistasis means the interaction between genes. It is observed in most GA-hard pr
 ## How to use code
 
 ```markdown
-gcc -o onemax_all onemax_all.c
-./ onemax_all RANDOM temp 1 4 
+gcc -o GA_Problems GA_Problems.c
+./ GA_Problems RANDOM temp 1 4 
 # RANDOM, NEXTDOOR - NK Landscape
 # temp - File name
 # 1 - NK_K
