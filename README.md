@@ -23,11 +23,11 @@ Epistasis means the interaction between genes. It is observed in most GA-hard pr
 gcc -o GA_Problems GA_Problems.c
 ./ GA_Problems RANDOM temp 1 4 
 # RANDOM, NEXTDOOR - NK Landscape
-# temp - File name
+# temp - File name, It has best solution's fitness
 # 1 - NK_K
 # 4 - NK_N
 gcc -o Epistasis Epistasis.c
 ./Epistasis 4 nk 1
-# 4 - NK_K
+# 4 - NK_N
 # nk - Type of Genetic Algorithm
-# 1 - NK_N
+# 1 - NK_K
